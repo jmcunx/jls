@@ -1,0 +1,112 @@
+.\" 
+.\" Copyright (c) 2019 2020 2021
+.\"     John McCue <jmccue@jmcunx.com>
+.\" 
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\" 
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\" 
+.TH jls 1 "$Date: 2021/03/18 00:10:36 $" "JMC" "User Commands"
+.SH NAME
+jls - program jls shows file info
+.SH SYNOPSIS
+jls [OPTIONS] [FILE...]
+.SH DESCRIPTION
+This Utility takes a list of file names from
+a Text File (or stdin or command line) and prints File
+Information.
+.PP
+This can be used to show file stat info in a standard
+format between various UN*X Systems.
+The various stat utilities show date information
+in different formats and on different lines.
+.PP
+If no files (FILE) are specified on the command line or
+if FILE has name '-', stdin (Standard Input) is used.
+.PP
+When stdin is used, it is assumed each record contains
+a name of the file you want information about.
+.TP
+-a
+Optional, Show Last Access Date/Time
+.TP
+-c
+Optional, Show Last Status Change Date/Time
+.TP
+-e file
+Optional, if used, write error messages to file 'file'.
+If not specified, errors written to stderr.
+.TP
+-f
+Optional, Force file create.
+Create file even if the target file exists.
+.TP
+-h
+Show brief help and exit.
+.TP
+-i file
+Optional, Get files to list from file 'file'.
+Default, get file names from the command line.
+.TP
+-m
+Optional, Show Modification Date/Time.
+If arguments -a, -c, -s are not specified,
+the list by default will show only Modification Date/Time.
+.TP
+-o file
+Optional, if used, write output to file 'file'.
+If not specified, output written to stdout.
+.TP
+-s
+Optional, Show File Size in Bytes.
+.TP
+-V
+Output version information and exit.
+.TP
+-v
+Optional, Verbose Level.
+Print information about the run,
+default do not show run messages.
+Can be specified multiple times,
+each specification increases verbose level:
+.nf
+    Level  Meaning
+    -----  ----------------------------------------
+    = 0    Do not show any messages, default
+    >= 1   Show headings on output
+    >= 2   Show files that could not be processed
+           on stderr
+    >= 3   Show summary stats on stderr.  Ignored
+           unless processing a file that contains
+           a list of file names
+.fi
+
+.SH DIAGNOSTICS
+In most cases you should use ls(1) instead, or stat(1)/istat(1)
+if those exists on your system.
+.PP
+This utility probably best used in scripts and
+those scripts need to analyze file
+stats without including any OS specific formatting.
+
+.SH SEE-ALSO
+file(1),
+istat(1),
+jistat(local),
+ls(1),
+readlink(1),
+stat(1),
+stat(2)
+.SH ERROR-CODES
+.nf
+0 success
+1 processing error or help/rev displayed
+.fi

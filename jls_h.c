@@ -1,0 +1,97 @@
+/*
+ * Copyright (c) 2019 2020 2021
+ *     John McCue <jmccue@jmcunx.com>
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+#include <sys/param.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include <j_lib2.h>
+#include <j_lib2m.h>
+
+#include "jls.h"
+
+char *jls_h_c="$Id: jls_h.c,v 1.4 2021/02/21 20:34:08 jmccue Exp $";
+
+extern char *jls_c;
+extern char *jls_h_c;
+extern char *jls_i_c;
+extern char *jls_u_c;
+
+#define MSG_HELP_11  "Template for new Programs"
+
+/*
+ * show_brief_help()
+ */
+void show_brief_help(FILE *fp, char *pname)
+
+{
+
+  fprintf(fp, USG_MSG_USAGE, pname);
+  fprintf(fp, "\t%s\n", MSG_HELP_11);
+  fprintf(fp, USG_MSG_OPTIONS);
+  fprintf(fp, USG_MSG_ARG_ACC_DATE,  SWITCH_CHAR, ARG_ACC_DATE);
+  fprintf(fp, USG_MSG_ARG_CHG_DATE,  SWITCH_CHAR, ARG_CHG_DATE);
+  fprintf(fp, USG_MSG_ARG_ERR,       SWITCH_CHAR, ARG_ERR);
+  fprintf(fp, USG_MSG_ARG_FORCE,     SWITCH_CHAR, ARG_FORCE);
+  fprintf(fp, USG_MSG_ARG_HELP,      SWITCH_CHAR, ARG_HELP);
+  fprintf(fp, USG_MSG_ARG_MOD_DATE,  SWITCH_CHAR, ARG_MOD_DATE);
+  fprintf(fp, USG_MSG_ARG_OUT,       SWITCH_CHAR, ARG_OUT);
+  fprintf(fp, USG_MSG_ARG_FILE_SIZE, SWITCH_CHAR, ARG_FILE_SIZE);
+  fprintf(fp, USG_MSG_ARG_VERSION,   SWITCH_CHAR, ARG_VERSION);
+  fprintf(fp, USG_MSG_ARG_VERBOSE_8, SWITCH_CHAR, ARG_VERBOSE);
+
+  exit(EXIT_FAILURE);
+
+}  /* show_brief_help() */
+
+/*
+ * show_rev()
+ */
+void show_rev(FILE *fp, char *pname)
+
+{
+
+  fprintf(fp,"%s %s:\n", pname, LIT_REV);
+  fprintf(fp,"\t%s\n", JLS_H);
+  fprintf(fp,"\t%s\n", jls_c);
+  fprintf(fp,"\t%s\n", jls_h_c);
+  fprintf(fp,"\t%s\n", jls_i_c);
+  fprintf(fp,"\t%s\n", jls_u_c);
+
+#ifdef J_LIB2M_H
+  fprintf(fp, "\t%s\n", J_LIB2M_H);
+#endif
+#ifdef J_LIB2_H
+  fprintf(fp, "\t%s\n", J_LIB2_H);
+  fprintf(fp, "\t     %s %s\n", LIT_INFO_02, j2_get_build());
+#endif
+
+#ifdef OSTYPE
+  fprintf(fp,"\t%s\n",OSTYPE);
+#endif  /* OSTYPE  */
+#ifdef PRETTY_NAME
+  fprintf(fp,"\t%s\n",PRETTY_NAME);
+#endif  /* OSTYPE  */
+  fprintf(fp, LIT_INFO_01, __DATE__, __TIME__);
+
+  exit(EXIT_FAILURE);
+
+}  /* show_rev() */
+
+/* END: jls_h.c */
