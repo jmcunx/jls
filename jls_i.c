@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 2020 2021
+ * Copyright (c) 2019 2020 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -29,25 +31,6 @@
 #include "jls.h"
 
 #define SCKARG 80
-
-char *jls_i_c="$Id: jls_i.c,v 1.5 2021/02/21 20:34:08 jmccue Exp $";
-
-/*** prototypes ***/
-void init_w(struct s_work *, char *);
-void save_fname(struct s_file_info *, char *, char *, char);
-
-/*
- * init() -- initialize
- */
-void init(int argc, char **argv, struct s_work *w)
-
-{
-
-  init_w(w, argv[0]);
-
-  process_arg(argc, argv, w);
-
-}  /* init() */
 
 /*
  * init_w() -- initialize work area
@@ -71,6 +54,35 @@ void init_w(struct s_work *w, char *a)
   w->ssiz             = FALSE;
 
 }  /* init_w() */
+
+/*
+ * save_fname() -- Check and Save File Name
+ */
+void save_fname(struct s_file_info *f, char *afname, char *pname, char arg_val)
+{
+  if (f->fname == (char *) NULL)
+    f->fname = strdup(afname);
+  else
+    {
+      fprintf(stderr, MSG_ERR_E074, SWITCH_CHAR, arg_val);
+      fprintf(stderr, MSG_ERR_E000, pname, SWITCH_CHAR, ARG_HELP);
+      exit(EXIT_FAILURE);
+    }
+
+} /* save_fname() */
+
+/*
+ * init() -- initialize
+ */
+void init(int argc, char **argv, struct s_work *w)
+
+{
+
+  init_w(w, argv[0]);
+
+  process_arg(argc, argv, w);
+
+}  /* init() */
 
 /*
  * process_arg() -- process arguments
@@ -167,21 +179,3 @@ void process_arg(int argc, char **argv, struct s_work *w)
     w->smod = TRUE;
 
 } /* process_arg() */
-
-/*
- * save_fname() -- Check and Save File Name
- */
-void save_fname(struct s_file_info *f, char *afname, char *pname, char arg_val)
-{
-  if (f->fname == (char *) NULL)
-    f->fname = strdup(afname);
-  else
-    {
-      fprintf(stderr, MSG_ERR_E074, SWITCH_CHAR, arg_val);
-      fprintf(stderr, MSG_ERR_E000, pname, SWITCH_CHAR, ARG_HELP);
-      exit(EXIT_FAILURE);
-    }
-
-} /* save_fname() */
-
-/* END: jls_i.c */

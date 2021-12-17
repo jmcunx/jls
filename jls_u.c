@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 2020 2021
+ * Copyright (c) 2019 2020 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,8 +26,6 @@
 #include <j_lib2m.h>
 
 #include "jls.h"
-
-char *jls_u_c="$Id: jls_u.c,v 1.4 2021/02/21 20:34:08 jmccue Exp $";
 
 /*
  * open_in() -- open in file
@@ -140,5 +140,3 @@ void init_finfo(struct s_file_info *f)
   f->fname = (char *) NULL;
 
 } /* init_finfo() */
-
-/* jls_u.c */

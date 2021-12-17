@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 2020 2021
+ * Copyright (c) 2019 2020 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -17,7 +17,7 @@
 
 #ifndef JLS_H
 
-#define JLS_H "$Id: jls.h,v 1.3 2020/06/15 22:23:54 jmccue Exp $"
+#define JLS_H "INCLUDED"
 
 #define PROG_NAME  "jls"
 
@@ -55,5 +55,3 @@ int  open_in(FILE **, char *, FILE *);
 void close_in(FILE **, char *);
 
 #endif /*  JLS_H  */
-
-/* END: jls.h */

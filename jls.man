@@ -1,5 +1,5 @@
 .\" 
-.\" Copyright (c) 2019 2020 2021
+.\" Copyright (c) 2019 2020 2021 2022
 .\"     John McCue <jmccue@jmcunx.com>
 .\" 
 .\" Permission to use, copy, modify, and distribute this software for any
@@ -14,7 +14,7 @@
 .\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 .\" 
-.TH jls 1 "$Date: 2021/03/18 00:10:36 $" "JMC" "User Commands"
+.TH jls 1 "2021/03/18" "JMC" "User Commands"
 .SH NAME
 jls - program jls shows file info
 .SH SYNOPSIS
@@ -88,7 +88,6 @@ each specification increases verbose level:
            unless processing a file that contains
            a list of file names
 .fi
-
 .SH DIAGNOSTICS
 In most cases you should use ls(1) instead, or stat(1)/istat(1)
 if those exists on your system.
@@ -96,7 +95,6 @@ if those exists on your system.
 This utility probably best used in scripts and
 those scripts need to analyze file
 stats without including any OS specific formatting.
-
 .SH SEE-ALSO
 file(1),
 istat(1),

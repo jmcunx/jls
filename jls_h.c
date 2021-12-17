@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 2020 2021
+ * Copyright (c) 2019 2020 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -26,14 +28,7 @@
 
 #include "jls.h"
 
-char *jls_h_c="$Id: jls_h.c,v 1.4 2021/02/21 20:34:08 jmccue Exp $";
-
-extern char *jls_c;
-extern char *jls_h_c;
-extern char *jls_i_c;
-extern char *jls_u_c;
-
-#define MSG_HELP_11  "Template for new Programs"
+#define MSG_HELP_11  "Print File Stats"
 
 /*
  * show_brief_help()
@@ -68,18 +63,9 @@ void show_rev(FILE *fp, char *pname)
 {
 
   fprintf(fp,"%s %s:\n", pname, LIT_REV);
-  fprintf(fp,"\t%s\n", JLS_H);
-  fprintf(fp,"\t%s\n", jls_c);
-  fprintf(fp,"\t%s\n", jls_h_c);
-  fprintf(fp,"\t%s\n", jls_i_c);
-  fprintf(fp,"\t%s\n", jls_u_c);
 
-#ifdef J_LIB2M_H
-  fprintf(fp, "\t%s\n", J_LIB2M_H);
-#endif
 #ifdef J_LIB2_H
-  fprintf(fp, "\t%s\n", J_LIB2_H);
-  fprintf(fp, "\t     %s %s\n", LIT_INFO_02, j2_get_build());
+  fprintf(fp, "\t%s %s\n", LIT_INFO_02, j2_get_build());
 #endif
 
 #ifdef OSTYPE
@@ -93,5 +79,3 @@ void show_rev(FILE *fp, char *pname)
   exit(EXIT_FAILURE);
 
 }  /* show_rev() */
-
-/* END: jls_h.c */
