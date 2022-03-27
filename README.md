@@ -4,7 +4,7 @@ jls is a simple utility I created because I
 cannot remember ls(1) options between various
 [Unix](https://en.wikipedia.org/wiki/Unix)
 Systems.
-I also wanted a default if printing only Last
+I also wanted a default of printing only Last
 Modification Date/Time and File Name.
 
 It also avoids command line size by reading
