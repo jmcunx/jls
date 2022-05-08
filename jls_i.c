@@ -72,19 +72,6 @@ void save_fname(struct s_file_info *f, char *afname, char *pname, char arg_val)
 } /* save_fname() */
 
 /*
- * init() -- initialize
- */
-void init(int argc, char **argv, struct s_work *w)
-
-{
-
-  init_w(w, argv[0]);
-
-  process_arg(argc, argv, w);
-
-}  /* init() */
-
-/*
  * process_arg() -- process arguments
  */
 void process_arg(int argc, char **argv, struct s_work *w)
@@ -179,3 +166,16 @@ void process_arg(int argc, char **argv, struct s_work *w)
     w->smod = TRUE;
 
 } /* process_arg() */
+
+/*
+ * init() -- initialize
+ */
+void init(int argc, char **argv, struct s_work *w)
+
+{
+
+  init_w(w, argv[0]);
+
+  process_arg(argc, argv, w);
+
+}  /* init() */
